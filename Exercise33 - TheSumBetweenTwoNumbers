@@ -1,0 +1,31 @@
+
+import java.util.Scanner;
+
+
+public class TheSumBetweenTwoNumbers {
+    public static void main(String[] args) {
+        Scanner reader = new Scanner(System.in);
+        
+        int firstInteger;
+        int lastInteger;
+        int iteratingInteger;
+        int sum = 0;
+        
+        System.out.print("First: ");
+        firstInteger = Integer.parseInt(reader.nextLine());
+        iteratingInteger = firstInteger;
+        
+        System.out.print("Last: ");
+        lastInteger = Integer.parseInt(reader.nextLine());
+        
+        while(iteratingInteger <= lastInteger)
+            {
+                sum += iteratingInteger;
+                iteratingInteger++;
+                
+            }
+        
+        System.out.println("The sum is " + sum);
+        
+    }
+}
