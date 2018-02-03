@@ -1,0 +1,24 @@
+
+import java.util.Scanner;
+
+public class Divider {
+
+    public static void main(String[] args) {
+        Scanner reader = new Scanner(System.in);
+
+        // Implement your program here. Remember to ask the input from user.
+        int num1;
+        int num2;
+        double quotient;
+        
+        
+        System.out.print("Type a number: ");
+        num1 = Integer.parseInt(reader.nextLine());
+        System.out.print("Type another number: ");
+        num2 = Integer.parseInt(reader.nextLine());
+        
+        quotient = ((double)num1 / num2);
+        
+        System.out.println("Division: " + num1 + " / " + num2 + " = " + quotient);
+    }
+}
