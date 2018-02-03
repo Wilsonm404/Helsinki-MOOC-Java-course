@@ -1,0 +1,27 @@
+import java.util.Scanner;
+
+public class Factorial {
+    public static void main(String[] args) {
+        Scanner reader = new Scanner(System.in);
+        
+        int userInteger;
+        int iteratingInteger = 1;
+        int product = 1;
+        
+        System.out.print("Type a number: ");
+        userInteger = Integer.parseInt(reader.nextLine());
+        
+        while(iteratingInteger <= userInteger)
+            {
+                product *= iteratingInteger;
+                if(iteratingInteger == 0)
+                    {
+                        product = 1;
+                    }
+                iteratingInteger++;
+                
+            }
+        System.out.println("Factorial is " + product);
+
+    }
+}
