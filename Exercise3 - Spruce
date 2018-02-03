@@ -1,0 +1,35 @@
+
+import java.util.ArrayList;
+
+public class Spruce {
+    ArrayList<String> spruceChar;
+    
+    
+    public Spruce()
+        {
+             this.spruceChar = new ArrayList<String>();
+        }
+
+    public static void main(String[] args) {
+       
+        Spruce spruce = new Spruce();
+ 
+        spruce.spruceChar.add("    *");
+        spruce.spruceChar.add("   ***");
+        spruce.spruceChar.add("  *****");
+        spruce.spruceChar.add(" *******");
+        spruce.spruceChar.add("*********");
+        spruce.spruceChar.add("    *");
+        
+        
+        for(String iterator : spruce.spruceChar)
+            {
+                System.out.println(iterator);
+            }
+        
+      
+        
+    }
+    
+   
+}
