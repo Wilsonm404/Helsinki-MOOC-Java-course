@@ -1,0 +1,25 @@
+
+import java.util.Scanner;
+
+public class SumOfThePowers {
+
+    public static void main(String[] args) {
+        Scanner reader = new Scanner(System.in);
+        
+        int userInteger;
+        int iteratingInteger = 0;
+        int sum = 0;
+        
+        System.out.print("Type a number: ");
+        userInteger = Integer.parseInt(reader.nextLine());
+        
+        while(iteratingInteger <= userInteger)
+            {
+                sum += (int)Math.pow(2, iteratingInteger);
+                iteratingInteger++;
+            }
+        
+        System.out.println("The result is: " + sum);
+        
+    }
+}
