@@ -1,0 +1,25 @@
+
+import java.util.Scanner;
+
+public class SeparatingCharacters {
+
+    public static void main(String[] args) {
+        Scanner reader = new Scanner(System.in);
+        
+        int listIndexIterator = 1;
+        int charIndexIterator = 0;
+        
+        String userName = "";
+        
+        System.out.print("Type your name: ");
+        userName = reader.nextLine();
+        
+        while(charIndexIterator <= userName.length() - 1)
+            {
+                System.out.println(listIndexIterator + ". " + "character: " + userName.charAt(charIndexIterator));
+                charIndexIterator++;
+                listIndexIterator++;
+                
+            }
+    }
+}
