@@ -1,0 +1,96 @@
+public class PrintingLikeBoss {
+
+    // copy or rewrite the method of Assignment 39.1 here
+    public static void printStars(int amount) 
+    {
+        int iteratingInteger = 1;
+        while(iteratingInteger <= amount)
+            {
+                System.out.print("*");
+                iteratingInteger++;
+            }
+        System.out.println("");
+    }
+
+    public static void printWhitespaces(int amount) 
+    {
+        // 40.1
+        int iteratingInteger = 1;
+        while(iteratingInteger <= amount)
+            {
+                System.out.print(" ");
+                iteratingInteger++;
+            }
+    }
+
+    public static void printTriangle(int size) {
+        // 40.2
+        //whitespace iterates to value 0
+        int whitespaceIterator = size - 1;
+        int starIterator = 1;
+        
+        while(starIterator <= size)
+            {
+                printWhitespaces(whitespaceIterator);
+                whitespaceIterator--;
+                
+                printStars(starIterator);
+                starIterator++;
+            }
+        
+    }
+
+    public static void xmasTree(int height) {
+        // 40.3
+        int heightIteratorInitial = 1;
+        int widthIteratorTotal = 1;
+        
+        //to calculate triangle largest width amount
+        while(heightIteratorInitial <= height)
+            {
+                widthIteratorTotal+= 2;
+                heightIteratorInitial+=1;
+            }
+        
+        int whiteSpaceWidthIterator = height - 1;
+        int starWidthIterator = 1;
+        int heightIterator = 1;
+        
+        while(heightIterator <= height)
+            {
+                printWhitespaces(whiteSpaceWidthIterator);
+                whiteSpaceWidthIterator--;
+                
+                printStars(starWidthIterator);
+                starWidthIterator += 2;
+                
+                heightIterator++;
+            }
+        
+        //the tree's stand's center starts at the 1-side-aligned triangle's end-width
+        //whitespaceTotal is -2 from width/height of isosceles triangle, preceeding 3 columns of stars
+        
+        //stand is two stars tall, 3 stars wide
+        int standHeight = 2;
+        int standWidth = 3;
+        int standIterator = 1;
+        
+        while(standIterator <= standHeight)
+            {
+                
+                printWhitespaces(height - 2);
+                printStars(standWidth);
+                standIterator++;
+            }
+    }
+
+    public static void main(String[] args) {
+        // Tests do not use main, yo can write code here freely!
+
+        printTriangle(5);
+        System.out.println("---");
+        xmasTree(4);
+        System.out.println("---");
+        xmasTree(10);
+    }
+}
