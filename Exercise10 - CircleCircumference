@@ -1,0 +1,21 @@
+
+import java.util.Scanner;
+
+public class Circumference {
+    public static void main(String[] args) {
+        Scanner reader = new Scanner(System.in);
+
+        // Program your solution here 
+        double pi = Math.PI;
+        double radius;
+        double circumference;
+        
+        System.out.print("Type the radius: ");
+        radius = Double.parseDouble(reader.nextLine());
+        
+        circumference = (2* pi * radius);
+        
+        System.out.println("Circumference of the circle: " + circumference);
+       
+    }
+}
