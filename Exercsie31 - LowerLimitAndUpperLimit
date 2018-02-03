@@ -1,0 +1,31 @@
+
+import java.util.Scanner;
+
+public class LowerLimitAndUpperLimit {
+
+    public static void main(String[] args) {
+        Scanner reader = new Scanner(System.in);
+
+        // write your code here
+        int lowerLimitInteger;
+        int upperLimitInteger;
+        
+        System.out.print("First: ");
+        lowerLimitInteger = Integer.parseInt(reader.nextLine());
+        
+        System.out.print("Last: ");
+        upperLimitInteger = Integer.parseInt(reader.nextLine());
+        
+        int iteratingInteger = lowerLimitInteger;
+        
+        if(lowerLimitInteger <= upperLimitInteger)
+            {
+                while(iteratingInteger <= upperLimitInteger)
+                    {
+                        System.out.println(iteratingInteger);
+                        iteratingInteger++;
+                    }
+            }
+
+    }
+}
