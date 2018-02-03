@@ -1,0 +1,24 @@
+import java.util.Scanner;
+
+
+public class LastCharacter {
+
+
+    public static void main(String[] args) {
+        Scanner reader = new Scanner(System.in);
+        
+        String userName = "";
+        
+        System.out.print("Type your name: ");
+        userName = reader.nextLine();
+        
+        System.out.println("Last character: " + lastCharacter(userName));
+    }
+    
+    public static char lastCharacter(String text)
+        {
+            int stringIndexTotal = text.length() - 1;
+            
+            return text.charAt(stringIndexTotal);
+        }
+}
