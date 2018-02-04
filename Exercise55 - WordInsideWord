@@ -1,0 +1,41 @@
+
+import java.util.Scanner;
+
+public class WordInsideWord {
+
+    public static void main(String[] args) {
+        Scanner reader = new Scanner(System.in);
+        
+//        int lowerLimitIndexWordSearch;
+//        int upperLimitIndexWordSearch;
+        
+        String firstWord;
+        String wordSearch;
+        
+        System.out.print("Type the first word: ");
+        firstWord = reader.nextLine();
+        
+        System.out.print("Type the second word: ");
+        wordSearch = reader.nextLine();
+        
+        int lowerLimitIndexWordSearch = firstWord.indexOf(wordSearch);
+        int upperLimitIndexWordSearch = (firstWord.indexOf(wordSearch) + wordSearch.length() -1 +1);
+        
+        // -1 for wordSearch.length() to align with index, +1 because upperLimit non-inclusive
+        if(lowerLimitIndexWordSearch != -1)
+            {
+               if(firstWord.substring(lowerLimitIndexWordSearch,upperLimitIndexWordSearch).equalsIgnoreCase(wordSearch))
+                    {
+                        System.out.println("The word " + "'"+ wordSearch + "'" + " is found in the word " + "'" + firstWord + "'" +"." );
+                    }
+            }
+        else
+            {
+                System.out.println("The word " + "'"+ wordSearch + "'" + " is not found in the word " + "'" + firstWord + "'" +"." );
+            }
+
+
+        
+        
+    }
+}
