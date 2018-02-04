@@ -1,0 +1,28 @@
+
+import java.util.Scanner;
+
+public class FirstPart {
+
+    public static void main(String[] args) {
+        Scanner reader = new Scanner(System.in);
+        
+        String userWord = "";
+        int upperLimitIndexWordDisplay;
+        String result = "";
+        
+        System.out.print("Type a word: ");
+        userWord = reader.nextLine();
+        
+        System.out.print("Length of the first part: ");
+        upperLimitIndexWordDisplay = Integer.parseInt(reader.nextLine());
+        
+       result = userWord.substring(0,upperLimitIndexWordDisplay);
+        
+        
+        
+        
+        
+        
+        System.out.println("Result: " + result);
+    }
+}
