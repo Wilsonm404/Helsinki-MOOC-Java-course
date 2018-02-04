@@ -1,0 +1,36 @@
+import java.util.Scanner;
+
+public class TheEndPart {
+    public static void main(String[] args) {
+        Scanner reader = new Scanner(System.in);
+        
+        String userWord = "";
+        int lowerLimitIndexWordDisplay;
+        int upperLimitIndexWordDisplay;
+        int wordDisplayLength;
+        
+        System.out.print("Type a word: ");
+        userWord = reader.nextLine();
+        
+        // example, length of end part : 4 --> mple; index total 6; char total 7
+        // lowerLimitIndexWordDisplay = 3
+        //  7 - 4 = 3
+        //user enters a char total for word to be displayed
+        
+        //example length of end part : 6 --> xample ; index total 6 ; char total 7
+        //lowerLimitIndexWordDisplay = 1
+        // 7 - 6 = 1
+        
+        System.out.print("Length of the end part: ");
+        wordDisplayLength = Integer.parseInt(reader.nextLine());
+        
+        lowerLimitIndexWordDisplay = userWord.length() - wordDisplayLength;
+        
+        String result = userWord.substring(lowerLimitIndexWordDisplay);
+        
+        System.out.println("Result: " + result);
+        
+        
+        
+    }
+}
