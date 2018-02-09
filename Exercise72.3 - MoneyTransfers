@@ -1,0 +1,29 @@
+
+public class Accounts {
+    
+    public static void transfer(Account from, Account to, double howMuch)
+        {
+            if(howMuch <= from.balance())
+                {
+                    from.withdrawal(howMuch);
+                    to.deposit(howMuch);
+                }
+            else 
+                {
+                    System.out.println("Insufficient funds; abort transfer");
+                }
+        }
+
+    public static void main(String[] args) {
+        // Code in Account.Java should not be touched!
+        // write your code here
+        Account account1 = new Account("A",100.00);
+        Account account2 = new Account("B",0.0);
+        Account account3 = new Account("C",0.0);
+        
+        transfer(account1,account2,50.00);
+        transfer(account2,account3,25.00);
+    }
+
+
+}
