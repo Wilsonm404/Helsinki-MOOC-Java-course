@@ -1,0 +1,33 @@
+
+import java.util.ArrayList;
+
+public class Menu {
+
+    private ArrayList<String> meals;
+
+    public Menu() {
+        this.meals = new ArrayList<String>();
+    }
+
+    // add the methods here
+    public void addMeal(String meal)
+        {
+            if(this.meals.contains(meal) != true)
+                {
+                    this.meals.add(meal);
+                }
+        }
+    
+    public void printMeals()
+        {
+            for(String iterator: this.meals)
+                {
+                    System.out.println(iterator);
+                }
+        }
+    
+    public void clearMenu()
+        {
+            this.meals.clear();
+        }
+}
