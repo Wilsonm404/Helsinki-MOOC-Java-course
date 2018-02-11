@@ -1,0 +1,50 @@
+
+public class BoundedCounter 
+{
+    private int value;
+    private int upperLimit;
+    
+    public BoundedCounter(int upperLimit)
+        {
+            this.value = 0;
+            this.upperLimit = upperLimit;
+        }
+    
+    public void next()
+        {
+            if(value == upperLimit)
+                {
+                    this.value = 0;
+                }
+            else
+                {
+                    value += 1;
+                }
+        }
+    
+    public void setValue(int valueSetting)
+        {
+            if(0 <= valueSetting && (this.upperLimit < valueSetting != true))
+                {
+                    this.value = valueSetting;
+                }
+        }
+    
+    public int getValue()
+        {
+            return this.value;
+        }
+    
+    public String toString()
+        {
+            if(this.value < 10)
+                {
+                    return "0" + this.value;
+                }
+            else
+                {
+                    return "" + this.value;
+                }
+        }
+    
+}
