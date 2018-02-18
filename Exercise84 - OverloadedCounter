@@ -1,0 +1,76 @@
+
+public class Counter 
+{
+    private int value;
+    private boolean check;
+    
+ public Counter(int startingValue, boolean check)
+    {
+        this.value = startingValue;
+        this.check = check;
+    }
+ public Counter(int startingValue)
+    {
+        this.value = startingValue;
+        this.check = false;
+    }
+ public Counter(boolean check)
+    {
+        this.value = 0;
+        this.check = check;
+    }
+ public Counter()
+    {
+        this.value = 0;
+        this.check = false;
+    }
+ 
+ public int value()
+    {
+        return this.value;
+    }
+ 
+ public void increase()
+    {
+        this.value += 1;
+    }
+ 
+ public void decrease()
+    {
+        if(this.check == false)
+            {
+                this.value -= 1;
+            }
+        else if(this.check == true && 0 < this.value )
+            {
+                this.value -= 1;
+            }
+    }
+ 
+ public void increase(int increaseAmount)
+    {
+        if(0 < increaseAmount)
+            {
+                this.value += increaseAmount;
+            }
+    }
+ 
+ public void decrease(int decreaseAmount)
+    {
+        if(0 < decreaseAmount)
+            {
+                if(this.check == false)
+                    {
+                        this.value -= decreaseAmount;
+                    }
+                else if(this.check == true && decreaseAmount <= this.value)
+                    {
+                        this.value -= decreaseAmount;
+                    }
+                else
+                    {
+                        this.value = 0;
+                    }
+            }
+    }
+}
