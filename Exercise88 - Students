@@ -1,0 +1,63 @@
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) 
+    {
+        // write here the main program
+        Scanner reader = new Scanner(System.in);
+        
+        ArrayList<Student> list = new ArrayList<Student>();
+        
+        String userInputName = "";
+        String userInputStudentNumber = "";
+        
+        String userSearch = "";
+        
+        while(true)
+            {
+                System.out.print("name: ");
+                userInputName = reader.nextLine();
+                
+                if(userInputName.isEmpty())
+                    {
+                        for(Student iterator : list)
+                            {
+                                System.out.print(iterator);
+                            }
+                        break;
+                    }
+                
+                System.out.print("studentnumber: ");
+                userInputStudentNumber = reader.nextLine();
+                
+                
+                list.add(new Student(userInputName,userInputStudentNumber));
+            }
+        
+        while(true)
+            {
+                System.out.print("Give search term: ");
+                userSearch = reader.nextLine();
+                
+                System.out.println("Result: ");
+                
+                for(Student iterator: list)
+                    {
+                        if(iterator.getName().contains(userSearch) || iterator.getStudentNumber().contains(userSearch))
+                            {
+                                System.out.println(iterator);
+                            }
+                    }
+                
+                if(userSearch.equalsIgnoreCase("exit"))
+                    {
+                        break;
+                    }
+                
+            }
+        
+    }
+}
