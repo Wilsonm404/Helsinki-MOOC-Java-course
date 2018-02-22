@@ -1,0 +1,106 @@
+public class MyDate {
+    private int day;
+    private int month;
+    private int year;
+
+    public MyDate(int day, int montd, int year) {
+        this.day = day;
+        this.month = montd;
+        this.year = year;
+    }
+
+    public String toString() {
+        return this.day + "." + this.month + "." + this.year;
+    }
+
+    public boolean earlier(MyDate compared) {
+        if (this.year < compared.year) {
+            return true;
+        }
+
+        if (this.year == compared.year && this.month < compared.month) {
+            return true;
+        }
+
+        if (this.year == compared.year && this.month == compared.month
+                && this.day < compared.day) {
+            return true;
+        }
+
+        return false;
+    }
+    
+    public int differenceInYears(MyDate comparedDate)
+        {
+            int yearDifferenceReturn = this.year -comparedDate.year;
+            
+            //how do I check for a full year in a date comparison?
+            
+            if(this.earlier(comparedDate) == true)
+                {
+                    return differenceWhenCurrentIsEarlier(comparedDate);
+                }
+            
+            boolean fullYear = false;
+            
+            if(yearDifferenceReturn != 0)
+                {
+                    if(this.earlier(comparedDate))
+                        {
+                            if(comparedDate.month < this.month)
+                                {
+                                        fullYear = true;
+                                }
+                        }
+                    
+                    if(comparedDate.month <= this.month)
+                        {
+                            if(comparedDate.day <= this.day)
+                                {
+                                    fullYear = true;
+                                }
+                        }
+                    
+                    if(fullYear == false)
+                        {
+                            yearDifferenceReturn -= 1;
+                        }
+                }
+            
+            return yearDifferenceReturn;    
+        }
+    
+    public int differenceWhenCurrentIsEarlier(MyDate comparedDate)
+        {
+            boolean fullYear = false;
+            
+            int yearDifferenceReturn = comparedDate.year - this.year;
+            
+            if(yearDifferenceReturn != 0)
+                {
+                    if(this.earlier(comparedDate))
+                        {
+                            if(this.month < comparedDate.month)
+                                {
+                                    fullYear = true;
+                                }
+                        }
+                            
+                    if(this.month <= comparedDate.month)
+                        {
+                            if(this.day <= comparedDate.day)
+                                {
+                                    fullYear= true;
+                                }
+                        }
+                    
+                    if(fullYear == false)
+                        {
+                            yearDifferenceReturn -= 1;
+                        }
+                }
+            
+            return yearDifferenceReturn;
+        }
+
+}
