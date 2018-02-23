@@ -1,0 +1,47 @@
+import java.util.ArrayList;
+
+public class Phonebook {
+    private ArrayList<Person> phoneBookIndex;
+    
+    public Phonebook()
+        {
+            this.phoneBookIndex = new ArrayList<Person>();
+        }
+    
+    public void add(String name, String number)
+        {
+            this.phoneBookIndex.add(new Person(name,number));
+        }
+    
+    public void printAll()
+        {
+            for(Person iterator: this.phoneBookIndex)
+                {
+                    System.out.println(iterator);
+                }
+        }
+    
+    public String searchNumber(String name)
+        {
+            int returnNumberCount = 0;
+            
+            for(Person iterator :this.phoneBookIndex)
+                {
+                    if(iterator.getName().contains(name))
+                        {
+                            returnNumberCount += 1;
+                            return iterator.getNumber();
+                        }
+                   
+                }
+            if(0 < returnNumberCount)
+                {
+                    return "";
+                }
+            else
+                {
+                    return "number not known";
+                }
+        }
+    
+}
