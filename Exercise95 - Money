@@ -1,0 +1,124 @@
+
+public class Money {
+
+    private final int euros;
+    private final int cents;
+
+    public Money(int euros, int cents) {
+
+        if (cents > 99) {
+            euros += cents / 100;
+            cents %= 100;
+        }
+
+        this.euros = euros;
+        this.cents = cents;
+    }
+    
+    public Money plus(Money added)
+        {
+            int summedEuros = this.euros + added.euros;
+            int summedCents = this.cents + added.cents;
+            
+            Money summedResult = new Money(summedEuros,summedCents);
+            
+            return summedResult;
+            
+        }
+    
+    public boolean less(Money comparedValue)
+        {
+            if(this.euros < comparedValue.euros)
+                {
+                    return true;
+                }
+            else if(this.euros == comparedValue.euros)
+                {
+                    if(this.cents < comparedValue.cents)
+                        {
+                            return true;
+                        }
+                    else 
+                        {
+                            return false;
+                        }
+                }
+            else 
+                {
+                    return false;
+                }
+        }
+    
+    public Money minus(Money decremented)
+        {
+            int differenceEuros = 0;
+            int differenceCents = 0;
+            
+            if( (this.euros - decremented.euros) < 0 )
+                {
+                    differenceEuros = 0;  
+                }
+            else
+                {
+                    if(decremented.cents <= this.cents)
+                    {
+                        differenceEuros = (this.euros - decremented.euros);
+                    }
+                    else if(this.cents < decremented.cents)
+                        {
+                            differenceEuros = (this.euros - decremented.euros) - 1;
+                            
+                        }
+                }
+            
+            if(differenceEuros < 0)
+                {
+                    differenceEuros = 0;
+                }
+            
+           
+                 if(this.cents == 0 && 0 < decremented.cents)
+                    {
+                            differenceCents = 100 - decremented.cents();
+                    }
+                else 
+                    {
+                        differenceCents = (this.cents - decremented.cents);
+                        
+                        if(this.less(decremented))
+                            {
+                                differenceCents = 0;
+                            }
+                    }
+                 
+                 if(differenceCents < 0)
+                    {
+                        differenceCents = 0;
+                    }
+
+
+            
+            Money differenceResult = new Money(differenceEuros,differenceCents);
+            
+            return differenceResult;
+        }
+
+    public int euros() {
+        return euros;
+    }
+
+    public int cents() {
+        return cents;
+    }
+
+    @Override
+    public String toString() {
+        String zero = "";
+        if (cents < 10) {
+            zero = "0";
+        }
+
+        return euros + "." + zero + cents + "e";
+    }
+
+}
