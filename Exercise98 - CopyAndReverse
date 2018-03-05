@@ -1,0 +1,59 @@
+
+
+public class Main {
+
+    public static void main(String[] args) {
+        // write testcode here
+    }
+    
+    public static int[] copy(int[] array)
+        {
+            int arrayLength = array.length;
+            int arrayIterator = 0;
+            
+            int[] duplicate = new int[arrayLength];
+            
+            for(int iterator : array)
+                {
+                    duplicate[arrayIterator] = iterator;
+                    arrayIterator += 1;
+                }
+            
+            return duplicate;
+        }
+    
+    public static int[] reverseCopy(int[] array)
+        { 
+            int arrayLength = array.length;
+            
+            int[] reverseDuplicate = new int[arrayLength];
+            
+            int indexPositionToBeAddedNext = (arrayLength - 1);
+            
+            int arrayIndexIterator = 0;
+            
+            int reverseDuplicateIndexIterator = 0;
+            
+            while( 0 <= indexPositionToBeAddedNext)
+            {
+                arrayIndexIterator = 0;
+                for(int iterator : array)
+                    {
+                        if(arrayIndexIterator == indexPositionToBeAddedNext)
+                            {
+                                reverseDuplicate[reverseDuplicateIndexIterator] = array[arrayIndexIterator];
+                                
+                                reverseDuplicateIndexIterator += 1;
+                                
+                                indexPositionToBeAddedNext -= 1;
+                            }
+                        
+                        arrayIndexIterator += 1;
+
+                    }
+            }
+            
+            return reverseDuplicate;
+        }
+    
+}
