@@ -1,0 +1,27 @@
+
+public class StringUtils {
+    
+    //'word' is search term, 'searched' is Book instance variable
+    public static boolean included(String word, String searched)
+        {
+            String formattedWord = word.trim();
+            
+            if(searched.contains(formattedWord) == true)
+                {
+                    return true;
+                }
+            else if(searched.contains(formattedWord.toLowerCase()) == true)
+                {
+                    return true;
+                }
+            else if(word.contains(formattedWord.toUpperCase()) == true)
+                {
+                    return true;
+                }
+            else
+                {
+                    return false;
+                }
+            
+        }
+}
