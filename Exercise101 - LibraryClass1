@@ -1,0 +1,82 @@
+import java.util.ArrayList;
+
+public class Library {
+    private ArrayList<Book> bookList;
+    
+    
+    
+    public Library()
+        {
+            this.bookList = new ArrayList<Book>();
+        }
+    
+    public void addBook(Book book)
+        {
+            this.bookList.add(book);
+        }
+    
+    public void printBooks(Book book)
+        {
+            for(Book iterator : this.bookList)
+                {
+                    System.out.println(iterator);
+                }
+        }
+    
+    public ArrayList<Book> searchByTitle(String title)
+        {
+            ArrayList<Book> searchResult = new ArrayList<Book>();
+            
+            StringUtils improvedSearch = new StringUtils();
+            
+            for(Book iterator : this.bookList)
+                {
+                    if(improvedSearch.included(title,iterator.title()) == true)
+                        {
+                            searchResult.add(iterator);
+                        }
+                }
+            
+            return searchResult;
+        }
+    
+    public ArrayList<Book> searchByPublisher(String publisher)
+        {
+            ArrayList<Book> searchResult = new ArrayList<Book>();
+            
+            StringUtils improvedSearch = new StringUtils();
+            
+            for(Book iterator : this.bookList)
+                {
+                    if(improvedSearch.included(publisher,iterator.publisher()) == true)
+                        {
+                            searchResult.add(iterator);
+                        }
+                }
+            
+            return searchResult;
+        }
+    
+    public ArrayList<Book> searchByYear(int year)
+        {
+            ArrayList<Book> searchResult = new ArrayList<Book>();
+            
+            for(Book iterator : this.bookList)
+                {
+                    if(iterator.year() == year)
+                        {
+                            searchResult.add(iterator);
+                        }
+                }
+            
+            return searchResult;
+        }
+    
+    public void printBooks()
+        {
+            for(Book iterator : this.bookList)
+                {
+                    System.out.println(iterator);
+                }
+        }
+}
