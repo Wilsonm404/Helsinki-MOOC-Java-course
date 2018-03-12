@@ -1,0 +1,55 @@
+import java.util.ArrayList;
+
+public class Scores {
+    public ArrayList<Integer> scoreList;
+    
+    public Scores()
+        {
+            this.scoreList = new ArrayList<Integer>();
+            
+            //setting index values to 0 to be incremented
+            this.populateIndexValues();
+        }
+    
+    public void addAndSortScores(int score)
+        {
+             if(score >= 50)
+            {
+                this.scoreList.set(5,this.scoreList.get(5) + 1);
+            }
+        else if(score >= 45)
+            {
+                this.scoreList.set(4,this.scoreList.get(4) + 1);
+            }
+        else if(score >= 40)
+            {
+                this.scoreList.set(3,this.scoreList.get(3) + 1);
+            }
+        else if(score >= 35)
+            {
+                this.scoreList.set(2,this.scoreList.get(2) + 1);
+            }
+        else if(score >= 30)
+            {
+                this.scoreList.set(1, this.scoreList.get(1) + 1);
+            }
+        else if( score <= 29)
+            {
+                this.scoreList.set(0,this.scoreList.get(0) + 1);
+            }
+        }
+    
+    public void populateIndexValues()
+        {
+            //populating indexes 0 - 5
+            
+            int indexIterator = 0;
+            
+            while(indexIterator <= 5)
+                {
+                    this.scoreList.add(indexIterator,0);
+                    indexIterator += 1;
+                }
+        }
+    
+}
