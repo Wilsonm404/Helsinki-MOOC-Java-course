@@ -1,0 +1,103 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner reader = new Scanner(System.in);
+        // implement your program here
+        // do not put all to one method/class but rather design a proper structure to your program
+        
+        // Your program should use only one Scanner object, i.e., it is allowed to call 
+        // new Scanner only once. If you need scanner in multiple places, you can pass it as parameter
+        
+        Scores scores = new Scores();
+        
+        int userInput = 0;
+        
+        System.out.println("Type exam scores, '-1' completes: ");
+        
+        while(userInput != -1)
+            {
+               userInput = Integer.parseInt(reader.nextLine()); 
+               
+               if(userInput != -1)
+                {
+                    if(0 <= userInput && userInput <= 60)
+                        {
+                            scores.addAndSortScores(userInput);
+                        }
+                }
+            }
+        
+        //scores are displayed when user entry completes
+        displayScores(scores);
+        acceptancePercentage(scores);
+        
+    }
+    
+    public static void displayScores(Scores scores)
+        {
+            
+            int indexDisplay = 5;
+            int indexIterator = 5;
+            
+            System.out.println("Grade Distribution: ");
+            
+            while(0 <= indexDisplay)
+                {
+                    System.out.print(indexDisplay + ":" + " " + printStars(scores.scoreList.get(indexIterator)));
+                    System.out.println();
+                    indexDisplay -= 1;
+                    indexIterator -= 1;
+                }
+            
+            
+        }
+    
+    public static String printStars(int iterator)
+        {
+            int printStarsIterator = 1;
+            
+            String starsReturn = "";
+            
+            while(printStarsIterator <= iterator)
+                {
+                    starsReturn += "*";
+                    printStarsIterator += 1;
+                }
+            
+            return starsReturn;
+        }
+    
+    public static void acceptancePercentage(Scores scores)
+        {
+            int acceptedScores = 0;
+            int totalScores = 0;
+            
+            double acceptancePercentage = 0;
+            
+            //need to have conditional check for current index position
+            int indexPosition = 0;
+                        
+            for( int iterator : scores.scoreList)
+                {
+                    if(indexPosition != 0)
+                        {
+                            acceptedScores += iterator;
+                            totalScores += iterator;
+                        }
+                    else
+                        {
+                            totalScores += iterator;
+                        }
+                    indexPosition += 1;
+                }
+            
+            if( totalScores != 0)
+                {
+                     acceptancePercentage = ((100* acceptedScores)/totalScores);
+                }
+            
+            System.out.print("Acceptance percentage: ");
+            System.out.println(String.format("%.1f",acceptancePercentage));
+        }
+}
