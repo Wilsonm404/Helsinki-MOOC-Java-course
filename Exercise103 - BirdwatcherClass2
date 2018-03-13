@@ -1,0 +1,129 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class BirdWatchersDatabase {
+    private ArrayList<String> nameList;
+    private ArrayList<String> latinNameList;
+    private ArrayList<Integer> observationCount;
+    
+    public BirdWatchersDatabase()
+        {
+            this.nameList = new ArrayList<String>();
+            this.latinNameList = new ArrayList<String>();
+            this.observationCount = new ArrayList<Integer>();
+            
+            this.runProgram();
+        }
+    
+    public void runProgram()
+        {
+            Scanner reader = new Scanner(System.in);
+            
+            String runVar= "isRunning";
+            
+            String userInput ="";
+            
+            while(runVar.equals("isRunning"))
+                {
+                    System.out.print("?" + " ");
+                    userInput = reader.nextLine();
+                    
+                    if(userInput.equalsIgnoreCase("Add"))
+                        {
+                            this.add(reader);
+                        }
+                    else if(userInput.equalsIgnoreCase("Observation"))
+                        {
+                            if(this.nameList.isEmpty() != true)
+                            {
+                                    this.addObservation(reader);
+                            }
+                        }
+                    else if(userInput.equalsIgnoreCase("Statistics"))
+                        {
+                            this.statistics();
+                        }
+                    else if(userInput.equalsIgnoreCase("Show"))
+                        {
+                            if(this.nameList.isEmpty() != true)
+                                {
+                                    this.show(reader);
+                                }
+                        }
+                    else if(userInput.equalsIgnoreCase("Quit"))
+                        {
+                            runVar ="";
+                        }
+                }
+            
+        }
+    
+    public void add(Scanner reader)
+        {
+            System.out.print("Name: ");
+            this.nameList.add(reader.nextLine());
+            
+            System.out.print("Latin name: ");
+            this.latinNameList.add(reader.nextLine());
+            
+            this.observationCount.add(0);
+        }
+    
+    public void addObservation(Scanner reader)
+        {
+            String birdObserved = "";
+            
+            System.out.print("What was observed?: ");
+            birdObserved = reader.nextLine();
+            if(this.nameList.contains(birdObserved)!= true)
+                {
+                    this.observationCount.add(this.nameList.indexOf(birdObserved),this.observationCount.get(this.nameList.indexOf(birdObserved)) + 1);
+                }
+            else 
+                {
+                    this.observationCount.set(this.nameList.indexOf(birdObserved),this.observationCount.get(this.nameList.indexOf(birdObserved)) + 1);
+                }
+        }
+    
+    public void statistics()
+        {
+            String latinName = "";
+            int observations = 0;
+            
+            for(String iterator : this.nameList)
+                {
+                    latinName = this.latinNameAtIndex(this.nameList.indexOf(iterator));
+                    observations = this.observationsAtIndex(this.nameList.indexOf(iterator));
+                    
+                    System.out.println(iterator + " " + "(" + latinName + ")" + ":" + " " + observations + " " + "observations");
+                }
+        }
+    
+    public void show(Scanner reader)
+        {
+            String userSearch = "";
+            
+            String latinName ="";
+            int observations = 0;
+            
+            System.out.print("What: ");
+            userSearch = reader.nextLine();
+            
+            latinName = this.latinNameAtIndex(this.nameList.indexOf(userSearch));
+            observations = this.observationsAtIndex(this.nameList.indexOf(userSearch));
+            
+            System.out.println(userSearch + " " + "(" + latinName + ")" + ":" + " " + observations + " " + "observations");
+            
+        }
+    
+    public String latinNameAtIndex(int index)
+        {
+            return this.latinNameList.get(index);
+        }
+    
+    public int observationsAtIndex(int index)
+        {
+            return this.observationCount.get(index);
+        }
+    
+}
