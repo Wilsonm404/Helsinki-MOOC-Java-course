@@ -1,0 +1,28 @@
+import java.util.ArrayList;
+
+public class Changer {
+    private ArrayList<Change> charChangeLibrary;
+    
+    public Changer()
+        {
+            this.charChangeLibrary = new ArrayList<Change>();
+        }
+    
+    public void addChange(Change change)
+        {
+            this.charChangeLibrary.add(change);
+        }
+    
+    public String change(String characterString)
+        {
+            String changeThisString = characterString;
+            
+            for(Change iterator : this.charChangeLibrary)
+                {
+                    changeThisString = iterator.change(changeThisString);
+                }
+            
+            return changeThisString;
+        }
+    
+}
