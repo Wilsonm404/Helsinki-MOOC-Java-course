@@ -1,0 +1,60 @@
+import java.util.ArrayList;
+
+public class Container {
+    
+    private int weightLimit;
+    
+    private ArrayList<Suitcase> contents;
+    
+    
+    private int totalWeight;
+    
+    public Container(int weightLimit)
+        {
+            this.weightLimit = weightLimit;
+            
+            this.contents = new ArrayList<Suitcase>();
+            
+            this.totalWeight = 0;
+        }
+    
+    public void addSuitcase(Suitcase suitcase)
+        {
+            int newTotalWeight = this.totalWeight + suitcase.totalWeight();
+            
+            if(this.weightLimit < newTotalWeight != true)
+                {
+                    this.contents.add(suitcase);
+                    this.totalWeight += suitcase.totalWeight();
+                }
+        }
+    
+    public void printThings()
+        {
+            // - nested loop, print suitcase, print content of suitcase, iterate -
+            
+            //not a nested loop, suitcase has method to print contents
+            
+            for(Suitcase suitcase : this.contents)
+                {
+                    suitcase.printThings();
+                }
+        }
+
+    public int getTotalWeight()
+        {
+            return this.totalWeight;
+        }
+    
+    public int getSuitcaseCount()
+        {
+            return this.contents.size();
+        }
+    
+    public String toString()
+        {
+            return getSuitcaseCount() + " " + "suitcases" + " " + "(" + this.getTotalWeight() + " " + "kg" + ")"; 
+        }
+    
+    
+}
