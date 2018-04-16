@@ -1,0 +1,99 @@
+import java.util.ArrayList;
+
+public class Suitcase {
+    private int weightLimit;
+    
+    private ArrayList<Thing> contents;
+    
+    
+    public Suitcase(int weightLimit)
+        {
+            this.weightLimit = weightLimit;
+            
+            this.contents = new ArrayList<Thing>();
+        }
+    
+    public void addThing(Thing item)
+        {
+            int totalWeight = totalWeight();
+          
+            
+            int newTotalWeight = item.getWeight() + totalWeight;
+            
+            
+            if(this.weightLimit < newTotalWeight != true)
+                {
+                    this.contents.add(item);
+                    
+                }
+        }
+    
+    public Thing heaviestThing()
+        {
+            int heaviest = 0;
+            Thing heaviestItem = new Thing("-TEST-",0);
+            
+            for(Thing iterator : this.contents )
+                {
+                    if(heaviest <= iterator.getWeight())
+                        {
+                            heaviest = iterator.getWeight();
+                        }
+                    
+                    if(heaviest <= iterator.getWeight())
+                        {
+                            heaviestItem = iterator;
+                        }
+                }
+            if(getContentCount() == 0)
+                {
+                 return null;
+                }
+            else
+                {
+                    return heaviestItem;
+                }
+        }
+    
+    public int totalWeight()
+        {
+            int totalWeight = 0;
+            
+            for(Thing iterator : this.contents)
+                {
+                    totalWeight += iterator.getWeight();
+                }
+            return totalWeight;
+        }
+    
+    
+    public int getContentCount()
+        {
+            return this.contents.size();
+        }
+    
+    public void printThings()
+        {
+            for(Thing iterator : this.contents)
+                {
+                    System.out.println(iterator);
+                }
+        }
+    
+    public String toString()
+        {
+            if(this.contents.isEmpty())
+                {
+                    return "empty" + "(" + this.totalWeight() + " " + "kg" + ")";
+                }
+            else if(this.contents.size() == 1)
+                {
+                    return this.getContentCount() + " " + "thing" + " " +"(" + this.totalWeight() + " " + "kg" + ")";
+                }
+            else 
+                {
+                    return this.getContentCount() + " " + "things" + " "+"(" + this.totalWeight() + " " + "kg" + ")";
+                }
+        }
+    
+}
