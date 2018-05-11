@@ -1,0 +1,102 @@
+import java.util.Scanner;
+
+
+public class TextUserInterface 
+{
+   private Scanner scannerAsObjectParameter;
+    
+   private Dictionary translationDictionary;
+   
+   
+    
+    public TextUserInterface(Scanner reader, Dictionary translationDictionary)
+        {
+            this.scannerAsObjectParameter = reader;
+            
+            this.translationDictionary = translationDictionary;
+        }
+    
+    public void start()
+        {
+            while(true)
+                {
+                   
+               //Display
+                    System.out.println("Statements:");
+                    System.out.println("    add - adds a word pair to the dictionary");
+                    System.out.println("    translate - asks a word and prints its translation");
+                    System.out.println("    quit - quit the text user interface");
+                    
+                    System.out.print("Statement: ");
+                    
+                    
+                 //UserInput
+                 String userInput = this.scannerAsObjectParameter.nextLine();
+                    
+                 //actions
+                    
+                    if(userInput.equalsIgnoreCase("quit") == true)
+                        {
+                            System.out.println("Cheers!");
+                            break;
+                        }
+                    else if(userInput.equalsIgnoreCase("add") == true)
+                         {
+                             this.add();
+                         }
+                    else if(userInput.equalsIgnoreCase("translate") == true)
+                        {
+                            this.translate();
+                        }
+                    else 
+                        {
+                            System.out.println("Unkown statement");
+                        }
+                    
+                                        
+                }
+        }
+    
+    public void translate()
+        {
+            String userInput = "";
+            
+           System.out.print("Give a word: ");
+           userInput = this.scannerAsObjectParameter.nextLine();
+           
+           String translation = this.translationDictionary.translate(userInput);
+           
+           System.out.println("Translation: " + translation);
+        }
+    
+    public void add()
+        {
+            String word = "";
+            
+            String translation = "";
+            
+            System.out.print("In Finnish: ");
+            word = this.scannerAsObjectParameter.nextLine();
+            
+            System.out.print("Translation: ");
+            translation = this.scannerAsObjectParameter.nextLine();
+            
+            this.translationDictionary.add(word, translation);
+            
+        }
+    
+    public boolean userInputIsCMD(String userInput)
+        {
+            //Tried to use this method as a conditional, when typing "add", I had to enter multiple lines of empty strings for the method to be called
+            //before the method was called "Uknown statement" was printed
+            
+            if(this.scannerAsObjectParameter.nextLine().equalsIgnoreCase(userInput) == true)
+                {
+                    return true;
+                }
+            else 
+                {
+                    return false;
+                }
+        }
+}
