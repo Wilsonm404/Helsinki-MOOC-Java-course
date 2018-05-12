@@ -1,0 +1,107 @@
+import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class AirportPanel 
+{
+    private Scanner reader;
+      
+    public HashMap<String,String> planeInfo;
+    
+    public ArrayList<String> flightInfo;
+    
+    
+    
+    
+    public AirportPanel(Scanner reader)
+        {
+            this.reader = reader;
+             
+            this.planeInfo = new HashMap<String,String>();
+            
+            this.flightInfo = new ArrayList<String>();
+        }
+    
+    //User Interface 
+    
+    public void run()
+        {
+            
+            String userCMD = "";
+            
+            
+            System.out.println("Airport panel\n" + "--------------------");
+            
+            while(true)
+                {
+                    System.out.println("Choose operation:\n" + "[1] Add airplane\n" + "[2] Add flight\n" + 
+                                "[x] Exit\n");
+                    
+                    
+                    userCMD = this.reader.nextLine();
+                    
+                    if(userCMD.equalsIgnoreCase("x"))
+                        {
+                            break;
+                        }
+                    else if(userCMD.equalsIgnoreCase("1"))
+                        {
+                            this.addAirplane();
+                        }
+                    else if(userCMD.equalsIgnoreCase("2"))
+                        {
+                            this.addFlight();                        
+                        }
+                }
+        }
+    
+    //add planes
+    public void addAirplane()
+        {
+            String planeID = "";
+            String planeCapacity ="";
+            
+            
+            System.out.print("Give plane ID: ");
+            planeID = this.reader.nextLine();
+            
+            System.out.print("Give plane capacity: ");
+            planeCapacity = this.reader.nextLine();
+            
+            this.planeInfo.put(planeID,"(" + planeCapacity + " " + "ppl" +")");
+        }
+    
+    //add flights
+        //if this.planeInfo.containsKey(userInputVar)
+            //{this.flightInfo.put(userInputVar + " " + this.planeInfo.get(userInputVar,DEPARTURE/DESTINATION)
+    
+    public void addFlight()
+        {
+            String planeID = "";
+            
+            String departureAirportCode = "";
+            String destinationAirportCode = "";
+            
+            System.out.print("Give plane ID: ");
+            planeID = this.reader.nextLine();
+            
+            System.out.print("Give departure airport code: ");
+            departureAirportCode = this.reader.nextLine();
+            
+            System.out.print("Give destination airport code: ");
+            destinationAirportCode = this.reader.nextLine();
+            
+            if(this.planeInfo.containsKey(planeID))
+                {
+//                    this.flightInfo.put(planeID + " " + this.planeInfo.get(planeID),"(" + departureAirportCode + "-" + destinationAirportCode + ")");
+                    this.flightInfo.add(planeID + " " + this.planeInfo.get(planeID) + " " + "(" + departureAirportCode + "-" + destinationAirportCode + ")" );
+                    
+                }
+            else 
+                {
+                    System.out.println("Flight was not added");
+                }
+        }
+    
+    
+}
