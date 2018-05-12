@@ -1,0 +1,90 @@
+import java.util.Scanner;
+import java.util.HashMap;
+
+public class FlightService 
+{
+    Scanner reader;
+    
+    AirportPanel airportInfo;
+    
+    public FlightService(Scanner reader, AirportPanel airportInfo)
+        {
+            this.reader = reader;
+            
+            this.airportInfo = airportInfo;
+        }
+    
+    //User interface
+    public void run()
+        {
+            String userCMD = "";
+            
+            System.out.println("Flight service\n" + "------------");
+            
+            while(true)
+                {
+                    System.out.println("Choose operation:\n" + "[1] Print planes\n" + "[2] Print flights\n" + "[3] Print plane info\n" + "[x] Quit");
+                    
+                    userCMD = this.reader.nextLine();
+                    
+                    if(userCMD.equalsIgnoreCase("x"))
+                        {
+                            break;
+                        }
+                    else if(userCMD.equalsIgnoreCase("1"))
+                        {
+                            this.displayPlanes();
+                        }
+                    else if(userCMD.equalsIgnoreCase("2"))
+                        {
+                            this.displayFlights();
+                        }
+                    else if(userCMD.equalsIgnoreCase("3"))
+                        {
+                            this.displayPlaneInfo();
+                        }
+                }
+            
+        }
+    
+    //print planes
+    
+    public void displayPlanes()
+        {
+            
+            for(String iterator : this.airportInfo.planeInfo.keySet())
+                {
+                    System.out.print(iterator + " " + this.airportInfo.planeInfo.get(iterator));
+                    System.out.println();
+                }
+        }
+    
+    //print flights
+    public void displayFlights()
+        {
+            for(int i = 1; i <= this.airportInfo.flightInfo.size(); i += 1)
+                {
+                    //i - 1 for explicit amount of flights, with consideration to index starting at 0
+                    System.out.println(this.airportInfo.flightInfo.get(i - 1 ));
+                }
+            
+        }
+    
+    //print plane info
+    public void displayPlaneInfo()
+        {
+            String userInput = "";
+            
+            System.out.print("Give plane ID: ");
+            userInput = this.reader.nextLine();
+            
+            if(this.airportInfo.planeInfo.containsKey(userInput))
+                {
+                    System.out.println(userInput + " " + this.airportInfo.planeInfo.get(userInput));
+                }
+            else 
+                {
+                    System.out.println("Invalid selection");
+                }
+        }
+}
