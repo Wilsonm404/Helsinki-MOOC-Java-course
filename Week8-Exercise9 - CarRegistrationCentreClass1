@@ -1,0 +1,61 @@
+
+public class RegistrationPlate {
+    // don't change the code which is already given to you
+
+    // ATTENTION: the object variable types are final, meaning that their value cannot be changed!
+    private final String regCode;
+    private final String country;
+
+    public RegistrationPlate(String country, String regCode) {
+        this.regCode = regCode;
+        this.country = country;
+    }
+
+    @Override
+    public String toString() {
+        return country + " " + regCode;
+    }
+    //Need to create Overridden boolean equals method for this object and overridden hashCode method
+    
+    //cast object type to compare in conditional statement
+    @Override
+    public boolean equals(Object object)
+        {
+            if(object == null)
+                {
+                    return false;
+                }
+            
+            if(this.getClass() != object.getClass())
+                {
+                    return false;
+                }
+            //object attribute comparison
+            
+            RegistrationPlate compared = (RegistrationPlate) object;
+            
+            if(this.regCode.equals(compared.regCode) != true )
+                    {
+                        return false;
+                    }
+            
+            if(this.country.equals(compared.country) != true)
+                {
+                    return false;
+                }
+            
+            return true;
+        }
+    @Override
+    public int hashCode()
+        {
+            if(this.regCode == null)
+                {
+                    return 653;
+                }
+            
+            return this.regCode.hashCode();
+        }
+    
+
+}
