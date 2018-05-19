@@ -1,0 +1,75 @@
+import java.util.HashMap;
+import java.util.ArrayList;
+
+public class VehicleRegister 
+{
+    private HashMap<RegistrationPlate,String> owners;
+    
+    
+    
+    
+    public VehicleRegister()
+        {
+            this.owners = new HashMap<RegistrationPlate,String>();
+        }
+    
+    public boolean add(RegistrationPlate plate, String owner)
+        {
+            if(this.owners.containsKey(plate)!= true)
+                {
+                    this.owners.put(plate,owner);
+                    
+                    return true;
+                }
+            
+            return false;
+        }
+    
+    public String get(RegistrationPlate plate)
+        {
+            return this.owners.get(plate);
+        }
+    
+    public boolean delete(RegistrationPlate plate)
+        {
+            if(this.owners.containsKey(plate) == true )
+                {
+                    this.owners.remove(plate);
+                    
+                    return true;
+                }
+            
+            return false;
+        }
+    
+    public void printRegistrationPlates()
+        {
+            for(RegistrationPlate iteratorKey : this.owners.keySet())
+                {
+                    System.out.println(iteratorKey);
+                }
+        }
+    
+    public void printOwners()
+        {
+            ArrayList<String> ownerOfCar = new ArrayList<String>();
+            
+           for(RegistrationPlate iteratorKey : this.owners.keySet())
+                {
+                    String ownerOfCarIterator = this.owners.get(iteratorKey);
+                    
+                    if(ownerOfCar.contains(ownerOfCarIterator) != true)
+                        {
+                            ownerOfCar.add(ownerOfCarIterator);
+                        }
+                }
+           
+           for(String iterator : ownerOfCar)
+            {
+                System.out.println(iterator);
+            }
+        }
+    
+    
+    
+}
