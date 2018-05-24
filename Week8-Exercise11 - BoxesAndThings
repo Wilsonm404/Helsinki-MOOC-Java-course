@@ -1,0 +1,46 @@
+import java.util.ArrayList;
+
+public class Box implements ToBeStored
+{
+    private ArrayList<ToBeStored> contains;
+    
+    private double capacity;
+    
+   // private double currentWeight;
+    
+    public Box(double capacity)
+        {
+            this.contains = new ArrayList<ToBeStored>();
+            
+            this.capacity = capacity;
+            
+           // this.currentWeight = 0;
+        }
+    
+    public void add(ToBeStored interfaceObject)
+        {
+          double newCurrentWeight = interfaceObject.weight() + this.weight();
+          
+          if(newCurrentWeight <= this.capacity)
+            {
+                this.contains.add(interfaceObject);
+            }
+        }
+    
+    public double weight()
+        {
+            double currentWeight = 0;
+            
+            for(ToBeStored iterator : contains)
+                {
+                    currentWeight += iterator.weight();
+                }
+            
+            return currentWeight;
+        }
+    
+    public String toString()
+        {
+            return "Box: " + this.contains.size() + " " + "things" + "," + " " + "total weight" + " "  + this.weight() + " " + "kg";
+        }
+}
