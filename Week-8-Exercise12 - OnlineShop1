@@ -1,0 +1,71 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+import java.util.HashSet;
+
+public class Storehouse 
+{
+        private Map<String, Integer> productPrices;
+        private Map<String, Integer> productStocks;
+ 
+
+
+public Storehouse()
+    {
+        this.productPrices = new HashMap<String, Integer>();
+        this.productStocks = new HashMap<String, Integer>();
+    }
+
+public void addProduct(String product, int price, int stock)
+    {
+        productPrices.put(product, price);
+        productStocks.put(product, stock);
+    }
+
+public boolean take(String product)
+    {
+        //decreases stock by 1 if object is available and returns true, otherwise,
+        //returns false, product stock cannot go below zero
+        if(productStocks.containsKey(product)&& (this.productStocks.get(product) != 0))
+                {
+                   int newStockValue = this.productStocks.get(product) - 1 ;
+                    
+                    this.productStocks.put(product, newStockValue);
+                    return true;
+                }
+        
+        return false;
+    }
+
+public Set<String> products()
+    {
+        //can add elements to a HashSet (.add), and iterate through a Set through a for-each loop
+        Set<String> returnProducts = new HashSet<String>();
+        
+        returnProducts = this.productPrices.keySet();
+        
+        return returnProducts;
+        
+    }
+
+public int price(String product)
+    {
+        if (this.productPrices.containsKey(product)!= true)
+            {
+                return -99;
+            }
+        
+        return this.productPrices.get(product);
+    }
+
+public int stock(String product)
+    {
+         if (this.productStocks.containsKey(product)!= true)
+            {
+                return 0;
+            }
+        
+        return this.productStocks.get(product);
+    }
+
+}
